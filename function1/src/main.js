@@ -15,6 +15,7 @@ export default async ({ req, res, log, error }) => {
         process.env.DB_ID,
         process.env.COLLECTION_ID
       )
+      return res.json(response.documents);
     }
 
 
