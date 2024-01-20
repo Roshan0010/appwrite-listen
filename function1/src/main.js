@@ -13,7 +13,10 @@ export default async ({ req, res, log, error }) => {
       process.env.COLLECTION_ID
     );
     console.log(response);
-    return res.json(response.documents);
+    return res.json(response);
+  }
+  else{
+    return res.json({error: true});
   }
 
 };
