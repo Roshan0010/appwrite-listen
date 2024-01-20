@@ -1,33 +1,19 @@
-
-import {Client,Databases} from 'node-appwrite'
+import { Client, Databases } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
 
-
   const client = new Client();
-  client
-    .setEndpoint(process.env.URL)
-    .setProject(process.env.PROJECT_ID);
+  client.setEndpoint(process.env.URL);
+  client.setProject(process.env.PROJECT_ID);
 
-    const db= new Databases(client);
-    if(req.method === 'GET'){
-      const response = await db.listDocuments(
-        process.env.DB_ID,
-        process.env.COLLECTION_ID
-      )
-      return res.json(response.documents);
-    }
-
-
-
-
-  // if(req.method==='GET'){
-  //   return res.send('this was a GET request');
-  // }
-  // if(req.method==='POST'){
-  //   return res.json({
-  //     'xyz':"helllo ji"
-  //   })
-  // }
+  const db = new Databases(client);
+  if (req.method === 'GET') {
+    const response = await db.listDocuments(
+      process.env.DB_ID,
+      process.env.COLLECTION_ID
+    );
+    return res.json(response.documents);
+  }
 
 };
+
